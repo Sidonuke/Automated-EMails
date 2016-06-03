@@ -4,7 +4,7 @@ import mysql.connector #Helpful to connect to the DB
 import datetime #Current date for email
 import json #Used below simply for indenting ;)
 
-cnx = mysql.connector.connect(user='DBAdmin', password='DBAdminPass', host='mysql.sidonuke.net', database='DatabaseName') #SQL Info
+cnx = mysql.connector.connect(user='USERNAME', password='PASSWORD', host='HOSTNAME', database='DATABASE') #SQL Info
 cursor = cnx.cursor()
 
 query = ("SELECT Time, Name, Flight, Reason, Done FROM Unlocks ") #Only the needed SQL Fields
@@ -19,12 +19,12 @@ for (Time, Name, Flight, Reason, Done) in cursor:
 date = datetime.datetime.now() #Date in SUBJECT line below.
 
 smtp = SMTP()
-smtp.connect('webmail.website.com', 587) #Our Email Server
-smtp.login('@email@website.com', 'Password') #Email Credentials. 
+smtp.connect('HOSTNAME', SMTPPORT) #Our Email Server
+smtp.login('USER@EMAIL.COM', 'PASSWORD') #Email Credentials. 
 
-FROM = 'Sidonuke@Sidonuke.net'
+FROM = 'WHO IS SENDING THE EMAIL (USER@EMAIL.COM)'
 
-TO = ["Sidonuke@Sidonuke.net"] # must be a list
+TO = ["RECEIVER (BOSS@EMAIL.COM)"] # must be a list
 
 SUBJECT = "Flight unlocks for" + " " + date.strftime("%m, %d, %Y")
 
