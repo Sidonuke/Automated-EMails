@@ -7,5 +7,7 @@ cursor.execute ("INSERT INTO UnlocksDB SELECT * FROM Unlocks") #Copies into the 
 cnx.commit()
 
 cursor.execute ("TRUNCATE TABLE Unlocks") # Empties the daily table so that we can begin a new day. (NOTE. The reason I didn't drop was because the field names are fine, just needed Data gone.
+cnx.commit()
+
 cursor.close()
 cnx.close()
